@@ -17,8 +17,8 @@ public class Main {
         System.out.println("=== RPG Battle Engine Demo ===\n");
 
         // TODO: Create heroes and enemies
-        Warrior warrior = new Warrior("Arthas");
-        Mage mage = new Mage("Jaina");
+        Warrior warrior = new Warrior("Lord");
+        Mage mage = new Mage("Aria");
         Goblin goblin = new Goblin();
 
         // TODO: Wrap with adapters
