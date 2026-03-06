@@ -10,6 +10,7 @@ public final class BattleEngine {
     private BattleEngine() {
     }
 
+    
     public static BattleEngine getInstance() {
         if (instance == null) {
             instance = new BattleEngine();
@@ -21,6 +22,32 @@ public final class BattleEngine {
         this.random = new Random(seed);
         return this;
     }
+    
+    private void executeTurn(List<Combatant> attackers,
+                         List<Combatant> defenders,
+                         EncounterResult result) {
+
+    for (Combatant attacker : attackers) {
+
+        if (!attacker.isAlive() || defenders.isEmpty())
+            continue;
+
+        Combatant target = defenders.get(random.nextInt(defenders.size()));
+
+        int damage = attacker.getAttackPower();
+        target.takeDamage(damage);
+
+        result.addLog(attacker.getName()
+                + " hits "
+                + target.getName()
+                + " for "
+                + damage);
+
+        if (!target.isAlive()) {
+            result.addLog(target.getName() + " was defeated!");
+        }
+    }
+}
 
     public void reset() {
         // TODO: reset any battle state if you add it

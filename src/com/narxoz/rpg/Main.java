@@ -45,6 +45,6 @@ public class Main {
             System.out.println(line);
         }
 
-        System.out.println("\n=== Demo Complete ===");
+       System.out.println("\nBattle demo finished.");;
     }
 }
