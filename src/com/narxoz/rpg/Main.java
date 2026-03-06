@@ -44,7 +44,15 @@ public class Main {
         for (String line : result.getBattleLog()) {
             System.out.println(line);
         }
-
-       System.out.println("\nBattle demo finished.");;
+        System.out.println("\n=== Battle Demo Finished ===");
+        System.out.println("Remaining heroes:");
+        for (Combatant hero : heroes) {
+            System.out.println("- " + hero.getName() + " (Alive: " + hero.isAlive() + ")");
+        }
+        System.out.println("Remaining enemies:");
+        for (Combatant enemy : enemies) {
+            System.out.println("- " + enemy.getName() + " (Alive: " + enemy.isAlive() + ")");
+        }
+;
     }
 }
