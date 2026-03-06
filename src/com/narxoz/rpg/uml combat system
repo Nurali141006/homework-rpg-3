@@ -1,0 +1,32 @@
+       +------------------+
+       |   Combatant      | 
+       +------------------+
+       | + getName(): String |
+       | + getAttackPower(): int |
+       | + takeDamage(amount: int): void |
+       | + isAlive(): boolean |
+       +------------------+
+          ^            ^
+          |            |
+          |            |
++------------------+   +------------------+
+| HeroCombatantAdapter |   | EnemyCombatantAdapter |
++------------------+   +------------------+
+| - hero: Hero     |   | - enemy: Enemy   |
++------------------+   +------------------+
+| + getName()      |   | + getName()      |
+| + getAttackPower() | | + getAttackPower() |
+| + takeDamage()   |   | + takeDamage()   |
+| + isAlive()      |   | + isAlive()      |
++------------------+   +------------------+
+          |                     |
+          |                     |
+          v                     v
+       +---------+           +---------+
+       |  Hero   |           |  Enemy  |
+       +---------+           +---------+
+       | getName()           | getTitle()
+       | getPower()          | getDamage()
+       | receiveDamage()     | applyDamage()
+       | isAlive()           | isDefeated()
+       +---------+           +---------+
