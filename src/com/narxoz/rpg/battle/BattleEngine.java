@@ -53,13 +53,33 @@ public final class BattleEngine {
         // TODO: reset any battle state if you add it
     }
 
-    public EncounterResult runEncounter(List<Combatant> teamA, List<Combatant> teamB) {
-        // TODO: validate inputs and run round-based battle
-        // TODO: use random if you add critical hits or target selection
-        EncounterResult result = new EncounterResult();
-        result.setWinner("TBD");
-        result.setRounds(0);
-        result.addLog("TODO: implement battle simulation");
-        return result;
+   public EncounterResult runEncounter(List<Combatant> teamA, List<Combatant> teamB) {
+
+    if (teamA == null || teamB == null || teamA.isEmpty() || teamB.isEmpty()) {
+        throw new IllegalArgumentException("Teams must not be empty");
     }
+
+    EncounterResult result = new EncounterResult();
+    int rounds = 0;
+
+    while (!teamA.isEmpty() && !teamB.isEmpty()) {
+
+        rounds++;
+        result.addLog("=== Round " + rounds + " ===");
+
+        executeTurn(teamA, teamB, result);
+        executeTurn(teamB, teamA, result);
+
+        teamA.removeIf(c -> !c.isAlive());
+        teamB.removeIf(c -> !c.isAlive());
+    }
+
+    String winner = teamA.isEmpty() ? "Enemies" : "Heroes";
+
+    result.setWinner(winner);
+    result.setRounds(rounds);
+    result.addLog("Winner: " + winner);
+
+    return result;
+}
 }
