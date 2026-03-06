@@ -1,0 +1,12 @@
++----------------------+
+|     BattleEngine     |
++----------------------+
+| - instance: BattleEngine |
+| - random: Random        |
++----------------------+
+| + getInstance(): BattleEngine |
+| + setRandomSeed(seed: long): BattleEngine |
+| + runEncounter(teamA: List<Combatant>, teamB: List<Combatant>): EncounterResult |
+| + reset(): void |
+| - executeTurn(attackers: List<Combatant>, defenders: List<Combatant>, result: EncounterResult): void |
++----------------------+
